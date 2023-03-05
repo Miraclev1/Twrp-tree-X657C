@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # Device Path Identifier
-DEVICE_PATH := device/infinix/Infinix-X657C
+DEVICE_PATH := device/infinix/X657C
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
