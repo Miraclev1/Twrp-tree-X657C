@@ -21,6 +21,7 @@ DEVICE_PATH := device/infinix/X657C
 ALLOW_MISSING_DEPENDENCIES := true
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 
 # Architecture
 TARGET_ARCH := arm
@@ -111,8 +112,8 @@ TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 
 # System as root
-#BOARD_SUPPRESS_SECURE_ERASE := true
-#BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
+BOARD_SUPPRESS_SECURE_ERASE := true
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Android Verified Boot
@@ -130,27 +131,33 @@ PLATFORM_VERSION := 16.1.0
 PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 
 # Crypto
-TW_INCLUDE_CRYPTO := true
+#TW_INCLUDE_CRYPTO := true
 #TW_INCLUDE_CRYPTO_FBE := true
 
-TARGET_RECOVERY_DEVICE_MODULES += \
-    libkeymaster4support \
-    libpuresoftkeymasterdevice \
-    ashmemd_aidl_interface-cpp \
-    libashmemd_client
+#TARGET_RECOVERY_DEVICE_MODULES += \
+    #libkeymaster4support \
+    #libpuresoftkeymasterdevice \
+    #ashmemd_aidl_interface-cpp \
+    #libashmemd_client
 
-TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4support.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/ashmemd_aidl_interface-cpp.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libashmemd_client.so
+#TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
+    #$(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4support.so \
+    #$(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
+    #$(TARGET_OUT_SHARED_LIBRARIES)/ashmemd_aidl_interface-cpp.so \
+    #$(TARGET_OUT_SHARED_LIBRARIES)/libashmemd_client.so
 
 # TWRP Configuration
 RECOVERY_SDCARD_ON_DATA := true
 TW_THEME := portrait_hdpi
+TW_EXTRA_LANGUAGES := true
+TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_USE_TOOLBOX := true
+TW_INCLUDE_NTFS_3G := true
+TW_INCLUDE_FUSE_EXFAT := true
+TW_USE_TOOLBOX := true
+TARGET_USES_MKE2FS := true # Use mke2fs to create ext4 images
 
 # Set brightness path and level
 TW_MAX_BRIGHTNESS := 1000
@@ -165,11 +172,10 @@ TARGET_USES_LOGD := true
 TW_EXCLUDE_TWRP_APP := true
 
 # Include some binaries
-#TW_INCLUDE_LIBRESETPROP := true
+TW_INCLUDE_LIBRESETPROP := true
 TW_INCLUDE_REPACKTOOLS := true
 TW_INCLUDE_RESETPROP := true
 #TW_INCLUDE_BASH := true
 
 # Maintainer/Version
 TW_DEVICE_VERSION := perilouspike
-
