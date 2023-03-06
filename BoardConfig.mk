@@ -111,8 +111,8 @@ TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 
 # System as root
-BOARD_SUPPRESS_SECURE_ERASE := true
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
+#BOARD_SUPPRESS_SECURE_ERASE := true
+#BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Android Verified Boot
@@ -130,17 +130,17 @@ PLATFORM_VERSION := 16.1.0
 PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 
 # Crypto
-#TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO := true
 #TW_INCLUDE_CRYPTO_FBE := true
 
 TARGET_RECOVERY_DEVICE_MODULES += \
-    libkeymaster4 \
+    libkeymaster4support \
     libpuresoftkeymasterdevice \
     ashmemd_aidl_interface-cpp \
     libashmemd_client
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4support.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/ashmemd_aidl_interface-cpp.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libashmemd_client.so
@@ -150,6 +150,7 @@ RECOVERY_SDCARD_ON_DATA := true
 TW_THEME := portrait_hdpi
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
+TW_USE_TOOLBOX := true
 
 # Set brightness path and level
 TW_MAX_BRIGHTNESS := 1000
