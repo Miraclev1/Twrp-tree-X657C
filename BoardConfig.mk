@@ -122,7 +122,7 @@ BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
 BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX := 1
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 2
+#BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 2
 
 # Hack: prevent anti rollback
 PLATFORM_SECURITY_PATCH := 2099-12-31
@@ -131,21 +131,22 @@ PLATFORM_VERSION := 16.1.0
 PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 
 # Crypto
-#TW_INCLUDE_CRYPTO := true
-#TW_INCLUDE_CRYPTO_FBE := true
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_FBE := true
+TW_USE_FSCRYPT_POLICY := 1
 
-#TARGET_RECOVERY_DEVICE_MODULES += \
-    #libkeymaster4support \
-    #libpuresoftkeymasterdevice \
-    #ashmemd_aidl_interface-cpp \
-    #libashmemd_client
+TARGET_RECOVERY_DEVICE_MODULES += \
+    libkeymaster4support \
+    libpuresoftkeymasterdevice \
+    ashmemd_aidl_interface-cpp \
+    libashmemd_client \
 
-#TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    #$(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4support.so \
-    #$(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
-    #$(TARGET_OUT_SHARED_LIBRARIES)/ashmemd_aidl_interface-cpp.so \
-    #$(TARGET_OUT_SHARED_LIBRARIES)/libashmemd_client.so
-
+TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4support.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/ashmemd_aidl_interface-cpp.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libashmemd_client.so
+    
 # TWRP Configuration
 RECOVERY_SDCARD_ON_DATA := true
 TW_THEME := portrait_hdpi
@@ -167,9 +168,14 @@ TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 # Debug-tools
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
+TARGET_RECOVERY_DEVICE_MODULES += debuggerd
+RECOVERY_BINARY_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/debuggerd
+TARGET_RECOVERY_DEVICE_MODULES += strace
+RECOVERY_BINARY_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/strace
 
 # Excludes
 TW_EXCLUDE_TWRP_APP := true
+TW_EXCLUDE_APEX := true
 
 # Include some binaries
 TW_INCLUDE_LIBRESETPROP := true
