@@ -4,14 +4,6 @@
 
 # mount point       fstype    device                                                                flags
 
-# Logical partitions.
-/system                   ext4      /dev/block/mapper/system                                flags=display="System";logical
-/system_image             emmc      /dev/block/mapper/system                                flags=display="System_image";flashimg=1;
-/vendor                   ext4      /dev/block/mapper/vendor                                flags=display="Vendor";logical
-/vendor_image             emmc      /dev/block/mapper/vendor                                flags=display="Vendor_image";flashimg=1;
-/product                  ext4      /dev/block/mapper/product                               flags=display="Product";logical
-/product_image            emmc      /dev/block/mapper/product                               flags=display="Product_image";flashimg=1;
-
 # Other partitions.
 /cache                    ext4     /dev/block/platform/bootdevice/by-name/cache             flags=display="Cache";wipeingui
 /boot                     emmc     /dev/block/platform/bootdevice/by-name/boot              flags=display="Boot";backup=1;flashimg=1;
