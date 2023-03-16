@@ -28,10 +28,10 @@ $(call inherit-product-if-exists, vendor/pb/config/common.mk)
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
-$(call inherit-product-if-exists, $(SRC_TARGET_DIR)/product/aosp_base.mk)
-$(call inherit-product-if-exists, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-$(call inherit-product-if-exists, $(SRC_TARGET_DIR)/product/embedded.mk)
-$(call inherit-product-if-exists, $(SRC_TARGET_DIR)/product/languages_full.mk)
+#$(call inherit-product-if-exists, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+#$(call inherit-product-if-exists, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+#$(call inherit-product-if-exists, $(SRC_TARGET_DIR)/product/embedded.mk)
+#$(call inherit-product-if-exists, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := X657C
@@ -40,9 +40,9 @@ PRODUCT_BRAND := Infinix
 PRODUCT_MODEL := X657C
 PRODUCT_MANUFACTURER := infinix
 
-PRODUCT_GMS_CLIENTID_BASE := android-infinix
+#PRODUCT_GMS_CLIENTID_BASE := android-infinix
 
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="vnd_x657c_h6117-user 11 RP1A.200720.011 131470 release-keys"
+#PRODUCT_BUILD_PROP_OVERRIDES += \
+    #PRIVATE_BUILD_DESC="vnd_x657c_h6117-user 11 RP1A.200720.011 131470 release-keys"
 
-BUILD_FINGERPRINT := Infinix/X657C-INJO/Infinix-X657C:11/RP1A.200720.011/210716V170:user/release-keys
+#BUILD_FINGERPRINT := Infinix/X657C-INJO/Infinix-X657C:11/RP1A.200720.011/210716V170:user/release-keys

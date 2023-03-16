@@ -55,8 +55,9 @@ BOARD_KERNEL_TAGS_OFFSET := 0x07880000
 BOARD_KERNEL_OFFSET := 0x00008000
 BOARD_RAMDISK_OFFSET := 0x11b00000
 BOARD_KERNEL_IMAGE_NAME := Image.gz
+BOARD_INCLUDE_RECOVERY_DTBO := true
 
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32S1,32S1 buildvariant=user
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32S1,32S1
 #BOARD_KERNEL_CMDLINE += androidboot.force_normal_boot=1  # TODO: Used in other device tree. Do we need it?
 #BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery  # TODO: Used in other device tree. Do we need it?
 
@@ -132,7 +133,7 @@ PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 
 # Crypto
 TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_CRYPTO_FBE := true
+#TW_INCLUDE_CRYPTO_FBE := true
 TW_USE_FSCRYPT_POLICY := 1
 
 TARGET_RECOVERY_DEVICE_MODULES += \
@@ -140,7 +141,7 @@ TARGET_RECOVERY_DEVICE_MODULES += \
     libkeymaster4support \
     libpuresoftkeymasterdevice \
     ashmemd_aidl_interface-cpp \
-    libashmemd_client \
+    libashmemd_client
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
