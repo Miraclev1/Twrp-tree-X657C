@@ -23,8 +23,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := smart5
-PRODUCT_NAME := twrp_smart5
+PRODUCT_DEVICE := X657C
+PRODUCT_NAME := twrp_X657C
 PRODUCT_BRAND := Infinix
 PRODUCT_MODEL := Infinix smart 5
 PRODUCT_MANUFACTURER := infinix
